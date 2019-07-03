@@ -40,16 +40,18 @@ namespace NexusReportingApi.Controllers
             return Ok(response);
         }
 
-        // GET api/values/5
+        //GET api/values/5
         [HttpGet("ByState")]
         public ActionResult<string> ByState()
         {
               var data = _ctx.Orders.Include(o => o.Customer).ToList();
-              var groupedResult = data.GroupBy(o => o.Customer.State).ToList()
+
+              var groupedResult = data.GroupBy(o => o.Customer.State)
+              .ToList()
               .Select(grp => new {
                 State = grp.Key,
                 Total = grp.Sum(x => x.orderTotal)
-              }).OrderByDescending(res => res.Total).ToList();
+              }).ToList();
 
             return Ok(groupedResult);
         }
@@ -67,55 +69,14 @@ namespace NexusReportingApi.Controllers
             return Ok(groupedResult);
         }
 
-        [HttpGet("GetOrder/{}", Name="GetOrder")]
+        [HttpGet("GetOrder/{id}")]
         public ActionResult<string> GetOrder(int id)
         {
             var  order = _ctx.Orders.
                 Include(o => o.Customer)
                 .FirstOrDefault(o => o.Id == id);
-                
+
             return Ok(order);
-        }
-
-        // POST api/values
-        [HttpPost]
-        public ActionResult Post([FromBody] Order order)
-        {
-            if (order == null)
-            {
-                return BadRequest();
-            }
-            _ctx.Orders.Add(order);
-            _ctx.SaveChanges();
-            return Ok("Customer has been created");
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] Order order)
-        {
-
-            if (order == null)
-            {
-                return BadRequest();
-            }
-            _ctx.Orders.Update(order);
-            _ctx.SaveChanges();
-
-            return Ok($"Customer {id} has been updated");
-
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
-        {
-
-            var data = _ctx.Orders.Where(c => c.Id == id).FirstOrDefault();
-            _ctx.Orders.Remove(data);
-            _ctx.SaveChanges();
-
-            return Ok($"Customer {id} has been delete");
         }
 
     }

@@ -20,62 +20,42 @@ namespace NexusReportingApi.Controllers
             _ctx = ctx;
         }
 
-        // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            var data = _ctx.Servers.OrderBy(c => c.Id);
-            return Ok(data);
+        public ActionResult Get(){
+            var response = _ctx.Servers.OrderBy(s => s.Id).ToList();
+            return Ok(response);
+
         }
 
-        // GET api/values/5
-        [HttpGet("{id}", Name = "GetServer")]
-        public ActionResult<string> Get(int id)
-        {
-            var data = _ctx.Servers.Where(c => c.Id == id).FirstOrDefault();
-            return Ok(data);
+        [HttpGet("{id}")]
+         public ActionResult Get(int id){
+
+            var response = _ctx.Servers.Find(id);
+            return Ok(response);
+
         }
 
-        // POST api/values
-        [HttpPost]
-        public ActionResult Post([FromBody] Server server)
-        {
-            if (server == null)
-            {
-                return BadRequest();
-            }
-            _ctx.Servers.Add(server);
-            _ctx.SaveChanges();
-            return Ok("Server has been created");
-        }
-
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] Server server)
-        {
+        public ActionResult Message(int id, [FromBody] ServerMessage msg){
 
-            if (server == null)
-            {
-                return BadRequest();
+            var server = _ctx.Servers.Find(id);
+            if(server == null){
+                return NotFound();
             }
-            _ctx.Servers.Update(server);
-            _ctx.SaveChanges();
+            if(msg.Payload == "activate"){
+                server.isHealthy = true;
+                
+            }
+              if(msg.Payload == "deactivate"){
+                server.isHealthy = false;
+                
+            }
 
-            return Ok($"Server {id} has been updated");
+            _ctx.SaveChanges();
+            return new NoContentResult();
 
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
-        {
-
-            var data = _ctx.Servers.Where(c => c.Id == id).FirstOrDefault();
-            _ctx.Servers.Remove(data);
-            _ctx.SaveChanges();
-
-            return Ok($"Server {id} has been delete");
-        }
 
     }
 

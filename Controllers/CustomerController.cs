@@ -14,11 +14,12 @@ namespace NexusReportingApi.Controllers
     {
         private readonly ApiContext _ctx;
 
-        public CustomerController(ApiContext ctx){
+        public CustomerController(ApiContext ctx)
+        {
             _ctx = ctx;
         }
 
-         // GET api/values
+        // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -27,10 +28,10 @@ namespace NexusReportingApi.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}", Name ="GetCustomer")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("{id}", Name = "GetCustomer")]
+        public ActionResult<string> GetCustomer(int id)
         {
-            var data = _ctx.Customers.Where( c => c.Id == id).FirstOrDefault();
+            var data = _ctx.Customers.Where(c => c.Id == id).FirstOrDefault();
             return Ok(data);
         }
 
@@ -38,7 +39,8 @@ namespace NexusReportingApi.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] Customer customer)
         {
-            if(customer == null){
+            if (customer == null)
+            {
                 return BadRequest();
             }
             _ctx.Customers.Add(customer);
@@ -51,13 +53,14 @@ namespace NexusReportingApi.Controllers
         public ActionResult Put(int id, [FromBody] Customer customer)
         {
 
-            if(customer == null){
+            if (customer == null)
+            {
                 return BadRequest();
             }
             _ctx.Customers.Update(customer);
             _ctx.SaveChanges();
 
-             return Ok($"Customer {id} has been updated");
+            return Ok($"Customer {id} has been updated");
 
         }
 
