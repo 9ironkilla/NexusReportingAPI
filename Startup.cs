@@ -29,6 +29,9 @@ namespace NexusReportingApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors( opt => {
+                opt.AddPolicy("CorsPolicy", c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            });
             _connectionString = Configuration["secretConnectionString"];
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddEntityFrameworkNpgsql().AddDbContext<ApiContext>(opt =>
@@ -45,6 +48,7 @@ namespace NexusReportingApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors("CorsPolicy");
             }
             else
             {
