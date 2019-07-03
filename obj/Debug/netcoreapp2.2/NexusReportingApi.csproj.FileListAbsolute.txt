@@ -1,0 +1,14 @@
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\bin\Debug\netcoreapp2.2\NexusReportingApi.deps.json
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\bin\Debug\netcoreapp2.2\NexusReportingApi.runtimeconfig.json
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\bin\Debug\netcoreapp2.2\NexusReportingApi.runtimeconfig.dev.json
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\bin\Debug\netcoreapp2.2\NexusReportingApi.dll
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\bin\Debug\netcoreapp2.2\NexusReportingApi.pdb
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.csprojAssemblyReference.cache
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.csproj.CoreCompileInputs.cache
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.RazorAssemblyInfo.cache
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.RazorAssemblyInfo.cs
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.AssemblyInfoInputs.cache
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.AssemblyInfo.cs
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.RazorTargetAssemblyInfo.cache
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.dll
+C:\Users\eric.vanwagner.CORE\angular_projects\NexusReportingApi\obj\Debug\netcoreapp2.2\NexusReportingApi.pdb
